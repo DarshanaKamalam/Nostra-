@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    .image-container {
+      position: relative;
+      max-width: 100%;
+    }
+
+    .sale-textbox {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ff0000;
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .heart-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #ff0000;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <div id="textBar"
+    class="bg-black text-white m-0 p-1 static top-0 left-0 w-full flex justify-around items-center hidden">
+    <p class="text-lg">Signup and GET 20% OFF for your first order.</p>
+    <button id="closeButton" class="text-white">&times;</button>
+  </div>
+  <div class="fixed z-10 w-full m-0">
+    <div class="flex items-center justify-between bg-white p-3">
+      <h2 class="text-2xl font-medium">Nostra</h2>
+      <div class="clicks space-x-4">
+        <a href="./index.html" class="text-black">Home</a>
+        <a href="./index.html" class="text-black">New arrivals</a>
+        <a href="./index.html" class="text-black">Most wanted</a>
+        <a href="./products.html" class="text-black">Collections</a>
+        <a href="./contact.html" class="text-black">Contact us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slideshow-container max-w-fill h-1/2 relative mx-auto top-0">
+    <div class="mySlides">
+      <img src="./images/banner1.jpg" alt="Image 1" class="w-full" style="height: 480px;">
+    </div>
+
+    <div class="mySlides">
+      <img src="./images/banner2.jpg" alt="Image 2" class="w-full h-96" style="height: 480px;">
+    </div>
+
+    <div class="mySlides">
+      <img src="./images/banner3.jpg" alt="Image 3" class="w-full h-96" style="height: 480px;">
+    </div>
+
+    <a class="prev absolute top-1/2 left-0 transform -translate-y-1/2 px-4 py-2 bg-black text-white font-bold text-lg rounded-full cursor-pointer transition duration-500 hover:bg-opacity-80"
+      onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next absolute top-1/2 right-0 transform -translate-y-1/2 px-4 py-2 bg-black text-white font-bold text-lg rounded-full cursor-pointer transition duration-500 hover:bg-opacity-80"
+      onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <div class="mt-10 mx-3">
+    <h3 class="text-2xl font-bold mb-4">Brands</h3>
+    <div class="logos flex justify-between gap-10">
+      <div class="logo">
+        <img src="./images/puma.png" alt="" class="w-16">
+        <p>Puma</p>
+      </div>
+      <div class="logo">
+        <img src="./images/adidas.png" alt="" class="w-16">
+        <p>Adidas</p>
+      </div>
+      <div class="logo">
+        <img src="./images/twitch.png" alt="" class="w-16">
+        <p>Twitch</p>
+      </div>
+      <div class="logo">
+        <img src="./images/two-leaves.png" alt="" class="w-16">
+        <p>Leaves</p>
+      </div>
+      <div class="logo">
+        <img src="./images/behance.png" alt="" class="w-16">
+        <p>Behance</p>
+      </div>
+      <div class="logo">
+        <img src="./images/puma.png" alt="" class="w-16">
+        <p>Puma</p>
+      </div>
+      <div class="logo">
+        <img src="./images/adidas.png" alt="" class="w-16">
+        <p>Adidas</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-between mt-10 mx-3">
+    <h3 class="text-2xl font-bold w-72">We Provide Best Customer Experiences</h3>
+    <p class="w-1/2 ">|| We ensure that our customer have the best shopping experiences</p>
+  </div>
+  <div class="flex gap-3 mx-3 mt-10">
+    <div class="w-1/4 bg-gray-300 p-3 rounded-md">
+      <img class="w-9" src="./images/interface.png" alt="">
+      <h1 class="font-bold">Original Products</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, distinctio?</p>
+    </div>
+    <div class="w-1/4 bg-gray-300 p-3 rounded-md">
+      <img class="w-9" src="./images/happy.png" alt="">
+      <h1 class="font-bold">Original Products</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, quia!</p>
+    </div>
+    <div class="w-1/4 bg-gray-300 p-3 rounded-md">
+      <img class="w-9" src="./images/paint-brush.png" alt="">
+      <h1 class="font-bold">Original Products</h1>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, cupiditate.</p>
+    </div>
+    <div class="w-1/4 bg-gray-300 p-3 rounded-md">
+      <img class="w-9" src="./images/fast-delivery.png" alt="">
+      <h1 class="font-bold">Original Products</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, beatae?</p>
+    </div>
+  </div>
+
+  <div class="mt-10 w-full mx-3">
+    <h3 class="text-2xl font-bold mb-4">New Arrivals</h3>
+    <div class="flex flex-wrap justify-between gap">
+      <div class="relative group w-1/4 ">
+        <img src="./images/arr1.jpg" alt="Image 1"
+          class="w-72 h-72 object-cover rounded-lg transition duration-300 transform group-hover:scale-105">
+        <div class="absolute inset-0 flex items-center justify-center opacity-100">
+          <button class="bg-blue-500 text-white py-2 px-4 rounded-lg">Shop Now</button>
+        </div>
+      </div>
+
+      <div class="relative group w-1/4">
+        <img src="./images/arr5.jpg" alt="Image 2"
+          class="w-72 h-72 object-cover rounded-lg transition duration-300 transform group-hover:scale-105">
+        <div class="absolute inset-0 flex items-center justify-center opacity-100">
+          <button class="bg-blue-500 text-white py-2 px-4 rounded-lg">Shop Now</button>
+        </div>
+      </div>
+
+      <div class="relative group w-1/4">
+        <img src="./images/arr3.jpg" alt="Image 3"
+          class="w-72 h-72 object-cover rounded-lg transition duration-300 transform group-hover:scale-105">
+        <div class="absolute inset-0 flex items-center justify-center opacity-100">
+          <button class="bg-blue-500 text-white py-2 px-4 rounded-lg">Shop Now</button>
+        </div>
+      </div>
+
+      <div class="relative group w-1/4">
+        <img src="./images/arr4.jpg" alt="Image 4"
+          class="w-72 h-72 object-cover rounded-lg transition duration-300 transform group-hover:scale-105">
+        <div class="absolute inset-0 flex items-center justify-center opacity-100 ">
+          <button class="bg-blue-500 text-white py-2 px-4 rounded-lg">Shop Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-3 mt-10">
+    <h3 class="text-2xl font-bold w-72">Most Wanted</h3>
+    <div class="flex overflow-x-scroll scroll-snap-x-mandatory whitespace-nowrap image-panel">
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/arr1.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/New folder/businessman-wearing-black-pants-with-white-shirt.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/New folder/hand-holding-light-brown-beige-pants.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/New folder/jeans (1).jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/New folder/jeans.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/arr2.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/arr3.jpg" alt="Sale Image">
+      </div>
+      <div class="image-container flex-shrink-0 w-80 h-80 object-cover scroll-snap-align-start">
+        <div class="sale-textbox">SALE</div>
+        <div class="heart-icon">&#9825;</div>
+        <img class="placeholder-image w-80 h-80 mr-1.5" src="./images/arr4.jpg" alt="Sale Image">
+      </div>
+    </div>
+
+  </div>
+
+  <section class="mt-5 text-center mb-5">
+    <h1 class="font-bold text-3xl mt-5">Join our New Letter</h1>
+    <p>Signup for our email newspaper to get exclusive discounts, updates, and more</p>
+    <input class="border border-black w-4/5 mt-3" type="text"><br>
+    <button class="bg-black hover:bg-black text-white font-bold py-2 px-4 mt-5 rounded underline">Subscribe</button>
+  </section>
+  <footer class="bg-black text-white p-10 flex flex-col gap-5">
+    <h1 class="text-3xl font-bold">Nostra</h1>
+    <p>The Standard chunk of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, neque.</p>
+    <p>&copy; 2021 Nostra.com</p>
+  </footer>
+    document.addEventListener('DOMContentLoaded', function () {
+      const textBar = document.getElementById('textBar');
+      const closeButton = document.getElementById('closeButton');
+
+      // Show the text bar
+      textBar.classList.remove('hidden');
+
+      // Close the text bar when the close button is clicked
+      closeButton.addEventListener('click', function () {
+        textBar.style.display = 'none';
+      });
+    });
+
+    let slideIndex = 1;
+
+    function showSlides(n) {
+      let i;
+      const slides = document.getElementsByClassName("mySlides");
+
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Call showSlides to display the first image initially
+    showSlides(slideIndex);
+
+    const imagePanel = document.querySelector('.image-panel');
+
+    imagePanel.addEventListener('wheel', function (event) {
+      event.preventDefault();
+
+      if (event.deltaY > 0) {
+        // Scrolling down, move images to the left
+        imagePanel.scrollLeft += 10;
+      } else {
+        // Scrolling up, move images to the right
+        imagePanel.scrollLeft -= 10;
+      }
+    });
+
+  </script> -->
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

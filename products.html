@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed z-10 w-full m-0">
+        <div class="flex items-center justify-between bg-white p-3">
+            <h2 class="text-2xl font-medium">Nostra</h2>
+            <div class="clicks space-x-4">
+                <a href="./index.html" class="text-black">Home</a>
+                <a href="./index.html" class="text-black">New arrivals</a>
+                <a href="./index.html" class="text-black">Most wanted</a>
+                <a href="./products.html" class="text-black">Collections</a>
+                <a href="./contact.html" class="text-black">Contact us</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-center pt-20">
+        <input id="searchInput" class="border border-black mb-5 p-1 w-4/5" type="search"
+            placeholder="Search for a Product...">
+    </div>
+
+    <div class="container mx-auto flex mb-4">
+        <div id="filters" class="bg-white p-4 shadow-md w-48">
+            <div class="filter-section mb-8">
+                <h3 class="mb-4 text-lg font-semibold">Occasion</h3>
+                <div class="filter-options flex flex-col">
+                    <label class="mb-2">
+                        <input type="checkbox" id="summerCheckbox"> <span class="ml-2">Summer</span>
+                    </label>
+                    <label class="mb-2">
+                        <input type="checkbox" id="partyCheckbox"> <span class="ml-2">Party</span>
+                    </label>
+                    <label class="mb-2">
+                        <input type="checkbox" id="beachCheckbox"> <span class="ml-2">Beach</span>
+                    </label>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3 class="mb-4 text-lg font-semibold">Colors</h3>
+                <div class="filter-options flex flex-col">
+                    <label class="mb-2">
+                        <input type="checkbox" id="redCheckbox"> <span class="ml-2">Red</span>
+                    </label>
+                    <label class="mb-2">
+                        <input type="checkbox" id="blueCheckbox"> <span class="ml-2">Blue</span>
+                    </label>
+                    <label class="mb-2">
+                        <input type="checkbox" id="whiteCheckbox"> <span class="ml-2">White</span>
+                    </label>
+                    <label class="mb-2">
+                        <input type="checkbox" id="greenCheckbox"> <span class="ml-2">Green</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mx-4"></div>
+    </div>
+  <footer class="bg-black text-white p-10 flex flex-col gap-5">
+    <h1 class="text-3xl font-bold">Nostra</h1>
+    <p>The Standard chunk of Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, neque.</p>
+    <p>&copy; 2021 Nostra.com</p>
+  </footer>
+
+
+    <script>
+        const products = [
+            { name: 'Summer Dress', occasion: ['summer'], color: 'red', price: '$39.99', image: './images/p1.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p2.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p3.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p4.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p5.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p6.jpg' },
+            { name: 'Party Shirt', occasion: ['party'], color: 'blue', price: '$29.99', image: './images/p7.jpg' },
+            { name: 'Beach Shorts', occasion: ['beach'], color: 'white', price: '$19.99', image: './images/arr1.jpg' },
+        ];
+
+        function filterProducts() {
+            const summerChecked = document.getElementById('summerCheckbox').checked;
+            const partyChecked = document.getElementById('partyCheckbox').checked;
+            const beachChecked = document.getElementById('beachCheckbox').checked;
+            const redChecked = document.getElementById('redCheckbox').checked;
+            const blueChecked = document.getElementById('blueCheckbox').checked;
+            const whiteChecked = document.getElementById('whiteCheckbox').checked;
+            const greenChecked = document.getElementById('greenCheckbox').checked;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+            const filteredProducts = products.filter(product => {
+                const hasOccasion = (!summerChecked || (summerChecked && product.occasion.includes('summer'))) &&
+                    (!partyChecked || (partyChecked && product.occasion.includes('party'))) &&
+                    (!beachChecked || (beachChecked && product.occasion.includes('beach')));
+
+                const hasColor = (!redChecked || (redChecked && product.color === 'red')) &&
+                    (!blueChecked || (blueChecked && product.color === 'blue')) &&
+                    (!whiteChecked || (whiteChecked && product.color === 'white')) &&
+                    (!greenChecked || (greenChecked && product.color === 'green'));
+
+                const matchesSearch = product.name.toLowerCase().includes(searchInput);
+
+                return hasOccasion && hasColor && matchesSearch;
+            });
+
+            displayProducts(filteredProducts);
+        }
+
+        function displayProducts(productsToDisplay) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+
+            productsToDisplay.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card p-4 bg-white rounded shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="w-72 h-80 object-cover mb-4">
+                    <h3 class="text-lg font-semibold">${product.name}</h3>
+                    <p class="text-sm">${product.price}</p>
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+        displayProducts(products);
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterProducts);
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', filterProducts);
+    </script>
+
+</body>
+
+</html>
